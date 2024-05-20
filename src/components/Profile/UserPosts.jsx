@@ -17,9 +17,9 @@ function UserPosts({userID}) {
     const token = Cookies.get("token")
     let url=""
     if(userID ==="me"){
-      url= `http://localhost:1337/api/posts?filters[author][id][$eq]=${currentUser.id}&_sort=created_at:desc`
+      url= `http://localhost:1337/api/posts?filters[author][id][$eq]=${currentUser.id}&sort=createdAt:desc`
     } else {
-      url = `http://localhost:1337/api/posts?filters[author][id][$eq]=${userID}`
+      url = `http://localhost:1337/api/posts?filters[author][id][$eq]=${userID}&sort=createdAt:desc`
     }
     fetch(url, { //special filter
       method: 'get',
@@ -33,8 +33,9 @@ function UserPosts({userID}) {
     })
     .then((response) => {
       console.log(response);
-      const sortedPosts = response.data.sort((a, b) => new Date(b.attributes.createdAt) - new Date(a.attributes.createdAt));
-      setPosts(sortedPosts)
+      // const sortedPosts = response.data.sort((a, b) => new Date(b.attributes.createdAt) - new Date(a.attributes.createdAt));
+      setPosts(response.data)
+      // setPosts(sortedPosts)
     })
     .catch((error) => { console.error(error); });
   }

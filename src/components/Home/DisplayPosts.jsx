@@ -7,9 +7,11 @@ const DisplayPosts = () => {
   const token = Cookies.get('token');
   const [posts,setPosts] = useState([])
   const [likeRefresh,setLikeRefresh] = useState("")
+  const [page,setPage] = useState(1)
+  const [totalPages,setTotalPages] = useState(1)
 
   function getPosts() {
-    fetch('http://localhost:1337/api/posts?populate=*', {
+    fetch(`http://localhost:1337/api/posts?populate=*&pagination[pageSize]=5&pagination[page]=${page}`, {
       method: 'get',
       headers: {
         'Authorization': `Bearer ${token}`,
@@ -25,11 +27,27 @@ const DisplayPosts = () => {
       const sortedPosts = response.data.sort((a, b) => new Date(b.attributes.createdAt) - new Date(a.attributes.createdAt));
       console.log(sortedPosts);
       setPosts(sortedPosts);
+      setTotalPages(response.meta.pagination.pageCount)
+      console.log(response.meta.pagination.pageCount);
     })
     .catch((error) => { console.error(error); });
   }
 
-  useEffect(getPosts,[likeRefresh])
+  useEffect(getPosts,[likeRefresh,page])
+
+  function previousPage(){
+    if (page > 1) {
+      setPage(page - 1);
+    }
+    window.scrollTo(0, 0);
+  }
+
+  function nextPage(){
+    if (page < totalPages) {
+      setPage(page + 1);
+    }
+    window.scrollTo(0, 0);
+  }
 
   return(
     <>
@@ -46,7 +64,12 @@ const DisplayPosts = () => {
           </div>
         )
       }
-
+      <div>
+        {page > 1 && <button onClick={previousPage}>-</button>}
+        <p>{page}</p>
+        {page < totalPages &&<button onClick={nextPage}>+</button>}
+      </div>
+      
     </>
   )
 }
