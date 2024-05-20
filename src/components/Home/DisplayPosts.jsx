@@ -66,7 +66,7 @@ const DisplayPosts = () => {
       }
       <div>
         {page > 1 && <button onClick={previousPage}>-</button>}
-        <p>{page}</p>
+        <p>page : {page}</p>
         {page < totalPages &&<button onClick={nextPage}>+</button>}
       </div>
       
