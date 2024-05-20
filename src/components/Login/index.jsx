@@ -1,5 +1,5 @@
 import Cookies from 'js-cookie'
-import {useNavigate} from "react-router-dom"
+import {useNavigate, useLocation} from "react-router-dom"
 //connect to Jotai
 import { useSetAtom } from 'jotai';
 import { userAtom } from '../atoms/user.js';
@@ -7,6 +7,7 @@ import { userAtom } from '../atoms/user.js';
 function Login() {
   const navigate = useNavigate();
   const setUser = useSetAtom(userAtom)
+  let location = useLocation();
 
   const fetchData = (data) => {
     fetch('http://localhost:1337/api/auth/local', {
@@ -28,7 +29,9 @@ function Login() {
         username:response.user.username
       })
 
-      navigate('/'); // Redirect to home page
+      // Redirect to prévious page or to home page
+      let { from } = location.state || { from: { pathname: "/" } };
+      navigate(from);
     })
     .catch((error) => { console.error(error); });
   }

@@ -46,3 +46,15 @@ posts.map(post =>
   setLikes(likes => ({ ...likes, [postId]: likes[postId] + 1 }));
   ou 
   setLikes(likes => ({ ...likes, [postId]: likes[postId] - 1 }));
+
+
+## Différence entre <Navigate/> et navigate("/")
+<Navigate/> est un composant et est utilisé dans le rendu JSX de votre composant, tandis que navigate("/chemin") est une fonction et est utilisée dans le code de gestion des événements ou d'autres fonctions de votre composant.
+
+### state?
+<Navigate to="/login" state={{ from: location }} />
+State n'est pas nécessaire, mais peut etre intéressant pour retenir la page ouverte avant le changement de page.
+cependant, une fois utilisé, il faut le rappeler dans la redirection ex:
+let location = useLocation();
+let { from } = location.state || { from: { pathname: "/" } };
+navigate(from);
