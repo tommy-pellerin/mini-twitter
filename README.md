@@ -58,3 +58,8 @@ cependant, une fois utilisé, il faut le rappeler dans la redirection ex:
 let location = useLocation();
 let { from } = location.state || { from: { pathname: "/" } };
 navigate(from);
+
+# React children
+In React, children is a special prop that is used to pass components as data to other components. This allows you to create component structures like <Parent><Child /></Parent>.
+
+In your PrivateRoute and LoggedRoute components, children is the component that you want to render inside the route. For example, in <PrivateRoute><Profile /></PrivateRoute>, Profile is the children of PrivateRoute.

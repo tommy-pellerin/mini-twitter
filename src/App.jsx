@@ -18,6 +18,18 @@ const PrivateRoute = ({ children }) => {
   return user.id ? children : <Navigate to="/login" state={{ from: location }} />;
 };
 
+const LoggedRoute = ({ children }) => {
+  const user = useAtomValue(userAtom);
+  const location = useLocation();
+
+  if (!user.id) {
+    alert('You must be logged in to log out');
+    return <Navigate to="/" state={{ from: location }} />;
+  }
+
+  return children;
+};
+
 function App() {
 
   return (
@@ -29,7 +41,7 @@ function App() {
           <Route path="/profile/:userID" element={<PrivateRoute><Profile /></PrivateRoute>}/>
           <Route path="/sigup" element={<Signup />}/>
           <Route path="/login" element={<Login />}/>
-          <Route path="/logout" element={<Logout />}/>
+          <Route path="/logout" element={<LoggedRoute><Logout /></LoggedRoute>}/>
           <Route path="*" element={<PageNotFound />}/> {/*Toutes les pages non prévu afficheront cette page*/}
         </Routes>
       </BrowserRouter>

@@ -45,19 +45,19 @@ function Login() {
   }
 
   return ( 
-    <div>
-      <h1>SignIn</h1>
+    <div className='border-2 rounded-lg border-blue-900 mx-10 py-5'>
+      <h1 className='text-3xl font-bold mb-5'>SignIn</h1>
       <form onSubmit={handleSubmit}>
-        <div>
+        <div className='my-3'>
           <label htmlFor="Email">Email</label><br />
-          <input type="email" id="Email" name="identifier" placeholder="Your Email" required></input>
+          <input className="border-2 rounded-lg border-blue-900 px-10 text-center" type="email" id="Email" name="identifier" placeholder="Your Email" required></input>
         </div>
-        <div>
+        <div className='my-3'>
           <label htmlFor="Password">Password</label><br />
-          <input type="password" id="Password" name="password" placeholder="Your Password" required></input>
+          <input className="border-2 rounded-lg border-blue-900 px-10 text-center" type="password" id="Password" name="password" placeholder="Your Password" required></input>
 
         </div>
-        <button type="submit">Submit</button>
+        <button type="submit" className="bg-blue-900 hover:bg-blue-700 text-white font-bold py-2 px-10 rounded-lg">Submit</button>
       </form>
     </div>
   );
