@@ -35,13 +35,14 @@ const CreatePost = () => {
   }
 
   return(
-    <div>
-      <h1>Write your post here:</h1>
+    <div className='border-2 rounded-lg border-blue-900 mx-10 py-5'>
+      <h1 className='text-3xl font-bold mb-5'>Write your post here:</h1>
       <form onSubmit={savePost}>
         <label>
-          <textarea type="text" name="text" required />
+          <textarea type="text" name="text" placeholder="Your text" required className="border-2 rounded-lg border-blue-900 px-5 text-center w-9/12 h-28"/>
         </label>
-        <button type="submit">Submit</button>
+        <br />
+        <button type="submit" className="bg-blue-900 hover:bg-blue-700 text-white font-bold py-2 px-10 rounded-lg">Submit</button>
       </form>
     </div>
   )

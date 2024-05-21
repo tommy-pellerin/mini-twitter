@@ -56,11 +56,12 @@ const UpdateProfile = ({user,setIsUpdating}) => { //gets props from parent compo
   }
   
   return(
-    <div>
+    <div className='border-2 rounded-lg border-blue-900 mx-10 mb-5 py-5'>
       <form onSubmit={saveUpdate}>
-        <h2>New User Name : <input type="text" name="username" minLength={1} placeholder="Your new user name" value={userNameInput} onInput={handleValue}/></h2>
-        <h2>Email : {user.email}</h2>
-        <button type="submit">Save update</button>
+        <h2 className='text-2xl mb-5'>New User Name : <br />
+          <input type="text" name="username" minLength={1} placeholder="Your new user name" value={userNameInput} onInput={handleValue} className="border-2 rounded-lg border-blue-900 px-10 text-center"/></h2>
+        <h2 className='text-2xl mb-5'>Email : {user.email}</h2>
+        <button type="submit" className="bg-blue-900 hover:bg-blue-700 text-white font-bold py-2 px-10 rounded-lg">Save update</button>
       </form>
     </div>
   )
