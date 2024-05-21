@@ -46,7 +46,7 @@ function Login() {
 
   return ( 
     <div className='border-2 rounded-lg border-blue-900 mx-10 py-5'>
-      <h1 className='text-3xl font-bold mb-5'>SignIn</h1>
+      <h1 className='text-3xl font-bold mb-5'>LogIn</h1>
       <form onSubmit={handleSubmit}>
         <div className='my-3'>
           <label htmlFor="Email">Email</label><br />

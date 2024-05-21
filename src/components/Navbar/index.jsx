@@ -40,7 +40,7 @@ function Navbar() {
           </div>
           <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
             <div className="flex flex-shrink-0 items-center">
-              <img className="h-8 w-auto" src={dialogImage} alt="Your Company"/>
+              <img className="h-8 w-auto" src={dialogImage} alt="dialog logo" width="10px" height="10px"/>
             </div>
             <div className="hidden sm:ml-6 sm:block">
               <div className="flex space-x-4">
